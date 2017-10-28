@@ -206,6 +206,17 @@ class Area_proses extends Admincore
         }
         
                     
-    } 
+    }
+    
+    function fuzzy($id = '')
+    {   
+        $data_sg1 = core::selectWhereCollums('area_proses','default','sg1',array('id'=>$id));
+        $data_sg2 = core::selectWhereCollums('area_proses','default','sg2',array('id'=>$id));
+        $data_sg3 = core::selectWhereCollums('area_proses','default','sg3',array('id'=>$id));
+
+
+        $this->session->set_flashdata('success','success');
+        redirect('area_proses');
+    }
                 
 }

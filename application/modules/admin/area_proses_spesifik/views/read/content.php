@@ -37,6 +37,7 @@
             <th>Spesific Goal</th>
             <th>Nama Area Proses Spesifik</th>
             <th>Nilai</th>
+            <th>Perhitungan</th>
             <th>Operasi</th>
           </tr>
         </thead>
@@ -61,6 +62,8 @@
               <td><?php echo $key->rataan?></td>
               <td>
               <a href="<?php echo base_url();?>area_proses_spesifik/hitung/<?php echo $key->id?>"><button class="btn btn-primary"><i class="fa fa-calculator"></i>  Hitung Nilai Spesific Goal</button></a>
+              </td>
+              <td>
               <a href="<?php echo base_url();?>area_proses_spesifik/update/<?php echo $key->id?>"><button class="btn btn-warning"><i class="fa fa-edit"></i> Perbarui</button></a>
               <a href="<?php echo base_url();?>area_proses_spesifik/delete/<?php echo $key->id?>"><button class="btn btn-danger" onclick="javascript: return confirm('Apakah yakin akan dihapus?')"><i class="fa fa-trash"></i> Hapus</button></a>
               <a href="<?php echo base_url();?>area_proses_spesifik/detail/<?php echo $key->id?>"><button class="btn btn-info"><i class="fa fa-search"></i> Telusuri Detail</button> </a>

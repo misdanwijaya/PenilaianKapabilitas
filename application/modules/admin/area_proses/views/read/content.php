@@ -41,6 +41,7 @@
             <th>SG3</th>
             <th>Nilai Karakteristik(SCAMPI)</th>
             <th>Nilai Karakteristik(Fuzzy)</th>
+            <th>Perhitungan</th>
             <th>Operasi</th>
           </tr>
         </thead>
@@ -61,6 +62,9 @@
               <td><?php echo $key->fuzzy?></td>
               <td>
               <a href="<?php echo base_url();?>area_proses/hitung/<?php echo $key->id?>"><button class="btn btn-primary"><i class="fa fa-calculator"></i> Hitung Nilai Area Proses</button> </a>
+              <a href="<?php echo base_url();?>area_proses/fuzzy/<?php echo $key->id?>"><button class="btn btn-info"><i class="fa fa-calculator"></i> Hitung dengan Fuzzy</button> </a>
+              </td>
+              <td>
               <a href="<?php echo base_url();?>area_proses/update/<?php echo $key->id?>"><button class="btn btn-warning"><i class="fa fa-edit"></i> Perbarui</button></a>
               <a href="<?php echo base_url();?>area_proses/delete/<?php echo $key->id?>"><button class="btn btn-danger" onclick="javascript: return confirm('Apakah yakin akan dihapus?')"><i class="fa fa-trash"></i> Hapus</button> </a>
               <a href="<?php echo base_url();?>area_proses_spesifik/cari/<?php echo $key->id?>"><button class="btn btn-info"><i class="fa fa-search"></i> Telusuri Detail</button> </a>
