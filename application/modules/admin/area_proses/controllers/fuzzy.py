@@ -162,7 +162,7 @@ def hitung_fuzzy(masukan_sg1, masukan_sg2, masukan_sg3):
     #tipping.print_state()
     #print tipping.output
     # Viewing the Consequent again after computation shows the calculated system
-    karakteristik.view(sim=tipping)
+    #karakteristik.view(sim=tipping)
     #quality.view(sim=tipping)
 
     #masukan fuzzy
@@ -182,16 +182,13 @@ except:
     print "ERROR"
     sys.exit(1)
 
-# Generate some data to send to PHP
-result = {'status': 'Yes!'}
+a_temp = data[0]
+b_temp = data[1]
+c_temp = data[2]
 
-# Send it to stdout (to PHP)
-print json.dumps(result)
-"""
-start_time = time.time()
-a = float(data1)
-b = float(data2)
-c = float(data3)
+a = float(a_temp)
+b = float(b_temp)
+c = float(c_temp)
 
 z = hitung_fuzzy(a,b,c)
 
@@ -200,15 +197,3 @@ result = {'status': z}
 
 # Send it to stdout (to PHP)
 print json.dumps(result)
-"""
-
-"""
-print ("--------------------------------\n")
-print ("Hasil Perhitungan:\n")
-print (z)
-print ("--------------------------------\n")
-print ("Waktu proses adalah :\n")
-print("%s detik\n" % (time.time() - start_time))
-print ("--------------------------------\n")
-raw_input("Tekan enter untuk keluar")
-"""

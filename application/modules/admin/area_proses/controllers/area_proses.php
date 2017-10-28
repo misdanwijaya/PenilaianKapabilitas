@@ -225,17 +225,17 @@ class Area_proses extends Admincore
         $resultData = json_decode($result, true);
 
         // This will contain: array('status' => 'Yes!')
-        var_dump($resultData);
-
-        /*
+        //var_dump($resultData);
+        //print_r($resultData);   
+        //echo $resultData['status'][0];
+        
         core::update('area_proses','default',array(
-            'fuzzy'  => $resultData,
+            'fuzzy'  => $resultData['status'][0],
         ), $id);
-
-       
+    
         $this->session->set_flashdata('success','success');
         redirect('area_proses');
-        */
+    
     }
                 
 }
