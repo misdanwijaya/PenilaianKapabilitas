@@ -214,9 +214,28 @@ class Area_proses extends Admincore
         $data_sg2 = core::selectWhereCollums('area_proses','default','sg2',array('id'=>$id));
         $data_sg3 = core::selectWhereCollums('area_proses','default','sg3',array('id'=>$id));
 
+        //contoh
+        // This is the data you want to pass to Python
+        $data = array($data_sg1,$data_sg2,$data_sg3);
 
+        // Execute the python script with the JSON data
+        $result = shell_exec('python "C:/xampp_2/htdocs/SkripsiV2/application/modules/admin/area_proses/controllers/fuzzy.py" ' . base64_encode(json_encode($data)));
+
+        // Decode the result
+        $resultData = json_decode($result, true);
+
+        // This will contain: array('status' => 'Yes!')
+        var_dump($resultData);
+
+        /*
+        core::update('area_proses','default',array(
+            'fuzzy'  => $resultData,
+        ), $id);
+
+       
         $this->session->set_flashdata('success','success');
         redirect('area_proses');
+        */
     }
                 
 }
