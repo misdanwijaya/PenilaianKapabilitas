@@ -83,10 +83,6 @@
               <div class="x_title">
                 <!-- <h2>Transaction Summary</h2> -->
                 <div class="filter">
-                  <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                    <!-- <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b> -->
-                  </div>
                 </div>
                 <div class="clearfix"></div>
               </div>
@@ -107,38 +103,9 @@
                  /* end mengambil query*/             
                 }?>
 
-                    <div id="report"></div>
-                  <!-- <div class="demo-container" style="height:280px">
-                    <div id="placeholder33x" class="demo-placeholder"></div>
-                  </div>
-                   -->
-                  
-                  <div class="tiles">
-                    <!-- <div class="col-md-4 tile">
-                      <span>Total Sessions</span>
-                      <h2>231,809</h2>
-                      <span class="sparkline11 graph" style="height: 160px;">
-                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                  </span>
-                    </div> -->
-                    <!-- <div class="col-md-4 tile">
-                      <span>Total Revenue</span>
-                      <h2>$231,809</h2>
-                      <span class="sparkline22 graph" style="height: 160px;">
-                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                  </span>
-                    </div> -->
-                    <!-- <div class="col-md-4 tile">
-                      <span>Total Sessions</span>
-                      <h2>231,809</h2>
-                      <span class="sparkline11 graph" style="height: 160px;">
-                                      <canvas width="200" height="60" style="display: inline-block; vertical-align: top; width: 94px; height: 30px;"></canvas>
-                                  </span>
-                    </div> -->
-                  </div>
-
+                    <div id="report"></div>              
                 </div>
-
+                
                   <!--Daftar Responden-->
                   <div class="col-md-3 col-sm-12 col-xs-12">
                     <div>
@@ -164,11 +131,41 @@
                       </ul>
                     </div>
                   </div>
-
-                <!-- </div> -->
-              <!-- </div> -->
             </div>
           </div>
+		  
+		  <!--
+		  <div class="row">
+          <div class="col-md-12">
+              <div class="x_title">
+                <div class="filter">
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="x_content">
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                <?php 
+                $bulan = date('10');
+                $tahun = date('Y');
+                $report2 =  
+                core::manualQuery("
+                SELECT 
+                AVG(rataan) as nilai, area_proses
+                FROM area_proses_spesifik
+                INNER JOIN area_proses
+                ON area_proses.id=area_proses_spesifik.id_area_proses
+                GROUP BY id_area_proses","default");
+                  foreach($report2->result() as $result2){
+                        $sub2[] = $result2->area_proses;
+                        $value2[] = (float)$result2->nilai;
+                 /* end mengambil query*/             
+                }?>
+
+                    <div id="report2"></div>              
+                </div>
+                  </div>
+            </div>
+          </div>-->
         
       <!-- /page content -->
 <!-- load library jquery dan highcharts -->
@@ -202,7 +199,7 @@
               }
           },
           title: {
-              text: 'Grafik Bulan <?php echo bulan($bulan).' '.$tahun ;?>',
+              text: 'Grafik Penilaian Karakteristik Bulan <?php echo bulan($bulan).' '.$tahun ;?>',
               style: {
                       fontSize: '18px',
                       fontFamily: 'Verdana, sans-serif'
@@ -225,7 +222,7 @@
           },
           tooltip: {
                formatter: function() {
-                   return 'Nilai Kapabilitas<b> ' + this.x + '</b> adalah <b>' + Highcharts.numberFormat(this.y,2) + '</b>';
+                   return 'Nilai Karakteristik<b> ' + this.x + '</b> adalah <b>' + Highcharts.numberFormat(this.y,2) + '</b>';
                }
             },
           legend: {
@@ -235,6 +232,83 @@
               // name: 'true',
               colorByPoint: true,
               data: <?php echo json_encode($value);?>,
+              shadow : true,
+              dataLabels: {
+                  enabled: true,
+                  color: '#045396',
+                  align: 'center',
+                  formatter: function() {
+                       return Highcharts.numberFormat(this.y, 2);
+                  }, // one decimal
+                  y: 0, // 10 pixels down from the top
+                  style: {
+                      fontSize: '13px',
+                      fontFamily: 'Verdana, sans-serif'
+                  }
+              }
+          }]
+      });
+  });
+  
+  
+  
+    $(function () {
+    // Highcharts.setOptions({
+    //       chart: {
+    //           backgroundColor: {
+    //               linearGradient: [0, 0, 500, 500],
+    //               stops: [
+    //                   [0, 'rgb(255, 255, 255)'],
+    //                   [1, 'rgb(240, 240, 255)']
+    //                   ]
+    //           },
+    //           borderWidth: 2,
+    //           borderHeight: 5,
+    //           plotBackgroundColor: 'rgba(255, 255, 255, .9)',
+    //           plotShadow: true,
+    //           plotBorderWidth: 1,
+    //       }
+    //   });
+      $('#report2').highcharts({
+          chart: {
+              type: 'column',
+              options3d: {
+              }
+          },
+          title: {
+              text: 'Grafik Penilaian Kapabilitas Bulan <?php echo bulan($bulan).' '.$tahun ;?>',
+              style: {
+                      fontSize: '18px',
+                      fontFamily: 'Verdana, sans-serif'
+              }
+          },
+          subtitle: {
+             text: 'Survei Kapabilitas',
+             style: {
+                      fontSize: '15px',
+                      fontFamily: 'Verdana, sans-serif'
+              }
+          },
+          xAxis: {
+              categories:  <?php echo json_encode($sub2);?>,
+          },
+          yAxis: {
+              title: {
+                  text: 'Nilai'
+              },
+          },
+          tooltip: {
+               formatter: function() {
+                   return 'Nilai Kapabilitas<b> ' + this.x + '</b> adalah <b>' + Highcharts.numberFormat(this.y,2) + '</b>';
+               }
+            },
+          legend: {
+              enabled:false
+            },
+          series: [{
+              // name: 'true',
+              colorByPoint: true,
+              data: <?php echo json_encode($value2);?>,
               shadow : true,
               dataLabels: {
                   enabled: true,
