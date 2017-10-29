@@ -98,11 +98,9 @@
                 $report =  
                 core::manualQuery("
                 SELECT 
-                AVG(rataan) as nilai, area_proses
-                FROM area_proses_spesifik
-                INNER JOIN area_proses
-                ON area_proses.id=area_proses_spesifik.id_area_proses
-                GROUP BY id_area_proses","default");
+                fuzzy as nilai, area_proses
+                FROM area_proses
+                GROUP BY id","default");
                   foreach($report->result() as $result){
                         $sub[] = $result->area_proses;
                         $value[] = (float)$result->nilai;
