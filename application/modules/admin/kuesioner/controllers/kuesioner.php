@@ -17,7 +17,7 @@ class Kuesioner extends Admincore
         $data['email'] = $this->session->userdata('email');
         $data['unit'] = $this->session->userdata('id_subunit');
 
-        $data['kuesioner'] = core::getAll("kuesioner","default");
+        $data['kuesioner'] = core::getAll("detail_kuesioner","default");
         //$data['kuesioner'] = core::selectWhere('kuesioner','default',array('id_subunit'=>7));
         $data['include'] =   $this->load->view('/read/include','',TRUE);
         $data['content'] =   $this->load->view('/read/content',$data,TRUE);

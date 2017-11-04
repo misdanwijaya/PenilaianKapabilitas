@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2017 at 05:35 PM
+-- Generation Time: Oct 29, 2017 at 08:57 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `area_proses` (
 
 INSERT INTO `area_proses` (`id`, `area_proses`, `sg1`, `sg2`, `sg3`, `avg`, `fuzzy`) VALUES
 (11, 'Service Delivery', '3.71', '3.48', '3.30', '3.50', '3.17592479416'),
-(12, 'Incident Resolution and Prevention', '3.83', '3.65', '3.70', '3.73', '3.25162115496'),
+(12, 'Incident Resolution and Prevention', '3.83', '3.65', '3.70', '3.73', '3.25162115497'),
 (13, 'Service System Development', '3.93', '3.29', '3.26', '3.49', '3.20555333998'),
 (14, 'Service System Transition', '3.00', '3.43', '0.00', '3.22', '3.00000000000'),
 (15, 'Strategic Service Management', '3.48', '3.86', '0.00', '3.67', '3.11534883721'),

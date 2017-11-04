@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2017 at 01:13 PM
+-- Generation Time: Nov 04, 2017 at 11:02 AM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -19,8 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `id3125941_skripsi`
 --
-CREATE DATABASE IF NOT EXISTS `u544544309_skrps` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `u544544309_skrps`;
+CREATE DATABASE IF NOT EXISTS `id3125941_skripsi` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `id3125941_skripsi`;
 
 -- --------------------------------------------------------
 
@@ -106,30 +106,30 @@ CREATE TABLE IF NOT EXISTS `area_proses` (
 --
 
 INSERT INTO `area_proses` (`id`, `area_proses`, `sg1`, `sg2`, `sg3`, `avg`, `fuzzy`) VALUES
-(11, 'Service Delivery', '3.71', '3.48', '3.30', '3.50', '0.00'),
-(12, 'Incident Resolution and Prevention', '3.83', '3.65', '3.70', '3.73', '0.00'),
-(13, 'Service System Development', '3.93', '3.29', '3.26', '3.49', '0.00'),
-(14, 'Service System Transition', '3.00', '3.43', '0.00', '3.22', '0.00'),
-(15, 'Strategic Service Management', '3.48', '3.86', '0.00', '3.67', '0.00'),
-(16, 'Configuration Management', '3.14', '3.57', '0.00', '3.36', '0.00'),
-(17, 'Measurement and Analysis', '2.93', '3.18', '0.00', '3.06', '0.00'),
-(18, 'Process and Product Quality Assurance', '3.00', '3.33', '0.00', '3.17', '0.00'),
-(19, 'Decision Analysis and Resolution', '3.10', '0.00', '0.00', '3.10', '0.00'),
-(20, 'Causal Analysis and Resolution', '3.24', '3.29', '0.00', '3.27', '0.00'),
-(21, 'Organizational Process Definition', '3.32', '0.00', '0.00', '3.32', '0.00'),
-(22, 'Organizational Process Focus', '3.03', '3.00', '3.64', '3.22', '0.00'),
-(23, 'Organizational Training', '3.60', '3.53', '0.00', '3.57', '0.00'),
-(24, 'Organizational Process Performance', '3.34', '0.00', '0.00', '3.34', '0.00'),
-(25, 'Organizational Performance Management', '2.95', '3.21', '3.07', '3.08', '0.00'),
-(26, 'Requirement Management', '3.63', '0.00', '0.00', '3.63', '0.00'),
-(27, 'Supplier Agreement Management', '3.65', '3.70', '0.00', '3.68', '0.00'),
-(28, 'Work Monitoring and Control', '3.63', '3.27', '0.00', '3.45', '0.00'),
-(29, 'Work Planning', '3.15', '3.33', '3.29', '3.26', '0.00'),
-(30, 'Capacity and Availability Management', '3.00', '2.94', '0.00', '2.97', '0.00'),
-(31, 'Integrated Work Management', '3.03', '0.00', '0.00', '3.03', '0.00'),
-(32, 'Risk Management', '3.56', '3.30', '3.50', '3.45', '0.00'),
-(33, 'Service Continuity', '3.27', '3.50', '3.19', '3.32', '0.00'),
-(34, 'Quantitative Work Management', '3.29', '3.50', '0.00', '3.40', '0.00');
+(11, 'Service Delivery', '3.71', '3.48', '3.30', '3.50', '3.18'),
+(12, 'Incident Resolution and Prevention', '3.83', '3.65', '3.70', '3.73', '3.25'),
+(13, 'Service System Development', '3.93', '3.29', '3.26', '3.49', '3.21'),
+(14, 'Service System Transition', '3.00', '3.43', '0.00', '3.22', '3.00'),
+(15, 'Strategic Service Management', '3.48', '3.86', '0.00', '3.67', '3.12'),
+(16, 'Configuration Management', '3.14', '3.57', '0.00', '3.36', '3.04'),
+(17, 'Measurement and Analysis', '2.93', '3.18', '0.00', '3.06', '2.89'),
+(18, 'Process and Product Quality Assurance', '3.00', '3.33', '0.00', '3.17', '3.00'),
+(19, 'Decision Analysis and Resolution', '3.10', '0.00', '0.00', '3.10', '3.03'),
+(20, 'Causal Analysis and Resolution', '3.24', '3.29', '0.00', '3.27', '3.07'),
+(21, 'Organizational Process Definition', '3.32', '0.00', '0.00', '3.32', '3.08'),
+(22, 'Organizational Process Focus', '3.03', '3.00', '3.64', '3.22', '3.01'),
+(23, 'Organizational Training', '3.60', '3.53', '0.00', '3.57', '3.16'),
+(24, 'Organizational Process Performance', '3.34', '0.00', '0.00', '3.34', '3.09'),
+(25, 'Organizational Performance Management', '2.95', '3.21', '3.07', '3.08', '2.92'),
+(26, 'Requirement Management', '3.63', '0.00', '0.00', '3.63', '3.20'),
+(27, 'Supplier Agreement Management', '3.65', '3.70', '0.00', '3.68', '3.22'),
+(28, 'Work Monitoring and Control', '3.63', '3.27', '0.00', '3.45', '3.15'),
+(29, 'Work Planning', '3.15', '3.33', '3.29', '3.26', '3.04'),
+(30, 'Capacity and Availability Management', '3.00', '2.94', '0.00', '2.97', '3.00'),
+(31, 'Integrated Work Management', '3.03', '0.00', '0.00', '3.03', '3.01'),
+(32, 'Risk Management', '3.56', '3.30', '3.50', '3.45', '3.13'),
+(33, 'Service Continuity', '3.27', '3.50', '3.19', '3.32', '3.07'),
+(34, 'Quantitative Work Management', '3.29', '3.50', '0.00', '3.40', '3.08');
 
 -- --------------------------------------------------------
 
@@ -203,6 +203,32 @@ INSERT INTO `area_proses_spesifik` (`id`, `id_area_proses`, `id_spesific_goal`, 
 (51, 34, 35, 'Quantitative Work Management SG1', '3.29'),
 (52, 34, 36, 'Quantitative Work Management SG2', '3.50');
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `detail_kuesioner`
+--
+CREATE TABLE IF NOT EXISTS `detail_kuesioner` (
+`id` int(11)
+,`sub_unit` varchar(50)
+,`pertanyaan` varchar(225)
+,`A` varchar(225)
+,`B` varchar(225)
+,`C` varchar(225)
+,`D` varchar(225)
+,`E` varchar(225)
+);
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `detail_sp`
+--
+CREATE TABLE IF NOT EXISTS `detail_sp` (
+`spesific_goal` int(11)
+,`pertanyaan` varchar(225)
+,`sub_unit` varchar(50)
+,`skor` int(5)
+);
 -- --------------------------------------------------------
 
 --
@@ -1602,6 +1628,16 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `log_responden`
+--
+CREATE TABLE IF NOT EXISTS `log_responden` (
+`tanggal` date
+,`nama_responden` varchar(50)
+,`email` varchar(50)
+);
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nilai`
 --
 
@@ -1790,6 +1826,33 @@ INSERT INTO `survey` (`id`, `id_jadwal`, `nama_responden`, `email`) VALUES
 (40, 12, 'Indah Putri', 'pe_5@survei.com'),
 (41, 12, 'Arif P', 'pe_6@survei.com'),
 (42, 12, 'Ilham D', 'pe_7@survei.com');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `detail_kuesioner`
+--
+DROP TABLE IF EXISTS `detail_kuesioner`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detail_kuesioner` AS (select `k`.`id` AS `id`,`su`.`sub_unit` AS `sub_unit`,`k`.`pertanyaan` AS `pertanyaan`,`k`.`A` AS `A`,`k`.`B` AS `B`,`k`.`C` AS `C`,`k`.`D` AS `D`,`k`.`E` AS `E` from (`kuesioner` `k` left join `sub_unit` `su` on((`k`.`id_subunit` = `su`.`id`))));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `detail_sp`
+--
+DROP TABLE IF EXISTS `detail_sp`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detail_sp` AS (select `ds`.`spesific_goal` AS `spesific_goal`,`k`.`pertanyaan` AS `pertanyaan`,`su`.`sub_unit` AS `sub_unit`,`ds`.`skor` AS `skor` from ((`detail_survey` `ds` left join `kuesioner` `k` on((`ds`.`nomor_soal` = `k`.`id`))) left join `sub_unit` `su` on((`k`.`id_subunit` = `su`.`id`))));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `log_responden`
+--
+DROP TABLE IF EXISTS `log_responden`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `log_responden` AS (select `j`.`tanggal` AS `tanggal`,`s`.`nama_responden` AS `nama_responden`,`s`.`email` AS `email` from (`survey` `s` left join `jadwal` `j` on((`s`.`id_jadwal` = `j`.`id`))));
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

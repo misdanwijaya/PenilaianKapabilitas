@@ -42,18 +42,12 @@
         <tbody style="color: ">
           <?php 
             $no =1;
-            foreach ($detail_survey->result() as $key ) {
-               $data['kuesioner'] = core::getJoin("detail_survey ds","kuesioner k","ds.nomor_soal = k.id","default",array("ds.nomor_soal" => $key->nomor_soal));
-                foreach ($data['kuesioner']->result() as $value) 
-                
-                $data['sub'] = core::getJoin("sub_unit su","kuesioner k","k.id_subunit = su.id","default",array("k.id_subunit" => $value->id_subunit));
-                foreach ($data['sub']->result() as $value2){
-                }
+            foreach ($detail_sp->result() as $key ) {
             ?>
             <tr>
               <td><?php echo $no++?></td>
-              <td><?php echo $value->pertanyaan?></td>
-              <td><?php echo $value2->sub_unit?></td>
+              <td><?php echo $key->pertanyaan?></td>
+              <td><?php echo $key->sub_unit?></td>
               <td><?php echo $key->skor?></td>
           </tr>
           <?php } ?>

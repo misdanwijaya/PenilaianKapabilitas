@@ -56,18 +56,10 @@
           <?php 
             $no =1;
             foreach ($kuesioner->result() as $key ) {
-              //$data['area_proses_spesifik'] = core::getJoin("kuesioner k","area_proses_spesifik aps","aps.id = k.id_area_proses_spesifik","default",array("k.id_area_proses_spesifik" => $key->id_area_proses_spesifik));
-              //foreach ($data['area_proses_spesifik']->result() as $value)
-              
-              $data['sub'] = core::getJoin("kuesioner k","sub_unit s","s.id = k.id_subunit","default",array("k.id_subunit" => $key->id_subunit));
-              foreach ($data['sub']->result() as $isi) {
-
-              }
             ?>
             <tr>
               <td><?php echo $no++?></td>
-              <td><?php echo $isi->sub_unit?></td>
-              <!--<td><?php echo $value->nama?></td>-->
+              <td><?php echo $key->sub_unit?></td>
               <td><?php echo $key->pertanyaan?></td>
               <td><?php echo $key->A?></td>
               <td><?php echo $key->B?></td>

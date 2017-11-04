@@ -187,7 +187,7 @@ class Area_proses_spesifik extends Admincore
         $data['unit'] = $this->session->userdata('id_subunit');
 
         $data['area_proses'] = core::getAll("area_proses","default");
-        $data['detail_survey'] = core::getWhere("detail_survey","default",array("spesific_goal"=>$id));
+        $data['detail_sp'] = core::getWhere("detail_sp","default",array("spesific_goal"=>$id));
         $data['spesific_goal'] = core::getAll("spesific_goal","default");
 
         $data['include'] =   $this->load->view('/read/include','',TRUE);

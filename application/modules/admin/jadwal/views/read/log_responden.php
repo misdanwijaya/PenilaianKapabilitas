@@ -43,14 +43,11 @@
           <?php 
             $no =1;
             foreach ($survey->result() as $key ) {
-                $data['jadwal'] = core::getJoin("survey s","jadwal j","s.id_jadwal = j.id","default",array("s.id_jadwal" => $key->id_jadwal));
-                foreach ($data['jadwal']->result() as $value) {
-                }
             ?>
             <tr>
               <td><?php echo $no++?></td>
               <td><?php
-              $tanggal2=date("d-m-Y",strtotime($value->tanggal));
+              $tanggal2=date("d-m-Y",strtotime($key->tanggal));
               echo $tanggal2?>
               </td>
               <td><?php echo $key->nama_responden?></td>

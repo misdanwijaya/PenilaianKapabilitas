@@ -151,7 +151,7 @@ class Jadwal extends Admincore
         $data['email'] = $this->session->userdata('email');
         $data['unit'] = $this->session->userdata('id_subunit');
 
-        $data['survey'] = core::getAll("survey","default");
+        $data['survey'] = core::getAll("log_responden","default");
         $data['include'] =   $this->load->view('/read/include','',TRUE);
         $data['content'] =   $this->load->view('/read/log_responden',$data,TRUE);
         $this->load->view("admin/main",$data);
