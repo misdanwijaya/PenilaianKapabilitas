@@ -48,7 +48,7 @@
               <td><?php echo $no++?></td>
               <td><?php echo $key->pertanyaan?></td>
               <td><?php echo $key->sub_unit?></td>
-              <td><?php echo $key->skor?></td>
+              <td><?php echo $key->total?></td>
           </tr>
           <?php } ?>
         </tbody>
