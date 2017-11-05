@@ -35,7 +35,6 @@
             <th>No</th>
             <th>Area Proses</th>
             <th>Spesific Goal</th>
-            <th>Nama Area Proses Spesifik</th>
             <th>Nilai</th>
             <th>Perhitungan</th>
             <th>Operasi</th>
@@ -48,17 +47,11 @@
           <?php
           $no = 1;  
           foreach ($area_proses_spesifik->result() as $key ){
-              //function getJoins($tbl1,$tbl2,$tbl3,$join_by,$join_bys,$database,$array)
-              $data['area_proses'] = core::getJoins("area_proses_spesifik aps","area_proses ap","spesific_goal sg","ap.id = aps.id_area_proses","sg.id = aps.id_spesific_goal","default",array("aps.id_area_proses" => $key->id_area_proses,"aps.id_spesific_goal" => $key->id_spesific_goal));
-              foreach ($data['area_proses']->result() as $isi)
-              {
-
-              }?>
+              ?>
             <tr>
               <td><?php echo $no++?></td>
-              <td><?php echo $isi->area_proses?></td>
-              <td><?php echo $isi->nama_spesific_goal?></td>
-              <td><?php echo $key->nama?></td>
+              <td><?php echo $key->area_proses?></td>
+              <td><?php echo $key->nama_spesific_goal?></td>
               <td><?php echo $key->rataan?></td>
               <td>
               <a href="<?php echo base_url();?>area_proses_spesifik/hitung/<?php echo $key->id?>"><button class="btn btn-primary"><i class="fa fa-calculator"></i>  Hitung Nilai Spesific Goal</button></a>
