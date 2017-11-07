@@ -12,8 +12,8 @@
       
     <div class="x_title">
       <h2 style="margin-top: 10px">Data Area Proses</h2>
-      <a href="<?php echo base_url('area_proses/upload');?>"><button class="btn btn-info" style="float: right;"><i class="fa fa-upload"></i> Impor</button></a>
-      <a href="<?php echo base_url('area_proses/download');?>"><button class="btn btn-success" style="float: right;"><i class="fa fa-download"></i> Ekspor</button></a>    
+      <!--<a href="<?php echo base_url('area_proses/upload');?>"><button class="btn btn-info" style="float: right;"><i class="fa fa-upload"></i> Impor</button></a>
+      <a href="<?php echo base_url('area_proses/download');?>"><button class="btn btn-success" style="float: right;"><i class="fa fa-download"></i> Ekspor</button></a>-->    
       <a href="<?php echo base_url('area_proses/create');?>"><button type="submit" name="tambah" class="btn btn-primary" style="float: right;"><i class="fa fa-plus-square"></i> Tambah</button></a>  
       <div class="clearfix"></div>
     </div>

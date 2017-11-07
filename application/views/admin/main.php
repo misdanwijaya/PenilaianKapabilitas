@@ -92,8 +92,8 @@
 
                 <li><a><i class="fa fa-calendar"></i> Kelola Jadwal <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="<?php echo base_url('jadwal/viewCalendar')?>">Kalender</a>
-                    </li>
+                    <!--<li><a href="<?php echo base_url('jadwal/viewCalendar')?>">Kalender</a>
+                    </li>-->
                     <li><a href="<?php echo base_url('jadwal')?>">Jadwal Survei</a>
                     </li>
                     <li><a href="<?php echo base_url('jadwal/log_responden')?>">Log Survei Responden</a>
