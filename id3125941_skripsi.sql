@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2017 at 11:02 AM
+-- Generation Time: Dec 14, 2017 at 04:05 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.19
 
@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`email`, `password`, `created`, `level_id`, `id_subunit`) VALUES
 ('admin@gmail.com', '3be0ff98032936bc7f9df51c5685ee5f2dd6ccee', '2017-10-01 14:51:15', 1, 7),
+('coba@gmail.com', 'adcd7048512e64b48da55b027577886ee5a36350', '2017-12-02 21:20:19', 2, 1),
 ('eam_1@survei.com', 'fe703d258c7ef5f50b71e06565a65aa07194907f', '2017-10-04 06:56:00', 2, 1),
 ('eam_2@survei.com', 'fe703d258c7ef5f50b71e06565a65aa07194907f', '2017-10-04 07:05:23', 2, 1),
 ('eam_3@survei.com', 'fe703d258c7ef5f50b71e06565a65aa07194907f', '2017-10-04 07:09:46', 2, 1),
@@ -206,11 +207,39 @@ INSERT INTO `area_proses_spesifik` (`id`, `id_area_proses`, `id_spesific_goal`, 
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `detail_aps`
+--
+CREATE TABLE IF NOT EXISTS `detail_aps` (
+`id` int(11)
+,`id_area_proses` int(11)
+,`area_proses` varchar(50)
+,`nama_spesific_goal` varchar(50)
+,`rataan` decimal(3,2)
+);
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `detail_kuesioner`
 --
 CREATE TABLE IF NOT EXISTS `detail_kuesioner` (
 `id` int(11)
 ,`sub_unit` varchar(50)
+,`pertanyaan` varchar(225)
+,`A` varchar(225)
+,`B` varchar(225)
+,`C` varchar(225)
+,`D` varchar(225)
+,`E` varchar(225)
+);
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `detail_kuesioner2`
+--
+CREATE TABLE IF NOT EXISTS `detail_kuesioner2` (
+`id` int(11)
+,`sub_unit` varchar(50)
+,`nama` varchar(100)
 ,`pertanyaan` varchar(225)
 ,`A` varchar(225)
 ,`B` varchar(225)
@@ -227,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `detail_sp` (
 `spesific_goal` int(11)
 ,`pertanyaan` varchar(225)
 ,`sub_unit` varchar(50)
-,`skor` int(5)
+,`total` decimal(14,4)
 );
 -- --------------------------------------------------------
 
@@ -1397,7 +1426,7 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
   `durasi` varchar(10) NOT NULL,
   `status` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `jadwal`
@@ -1407,7 +1436,8 @@ INSERT INTO `jadwal` (`id`, `tanggal`, `start_time`, `doe_time`, `durasi`, `stat
 (9, '2017-10-04', '10:00:00', '12:00:00', '2', 0),
 (10, '2017-10-04', '12:00:00', '14:00:00', '2', 0),
 (11, '2017-10-05', '10:00:00', '12:00:00', '2', 0),
-(12, '2017-10-10', '13:00:00', '15:00:00', '2', 0);
+(12, '2017-10-10', '13:00:00', '15:00:00', '2', 0),
+(13, '2017-12-03', '13:00:00', '17:00:00', '4', 0);
 
 -- --------------------------------------------------------
 
@@ -1437,7 +1467,7 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (21, 1, 7, 'Terdapat perjanjian pelayanan (Service Agreement) sebelum menggunakan jasa dari PLN', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (22, 3, 1, 'Terdapat jadwal pemeliharaan pada sistem pelayanan yang ada', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (23, 3, 5, 'Terdapat jadwal pemeliharaan pada sistem pelayanan yang ada', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(24, 2, 7, 'Tersedia layanan costumer service untuk pelanggan bila terjadi masalah', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(24, 2, 7, 'Tersedia layanan customer service untuk pelanggan bila terjadi masalah', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (26, 2, 7, 'Terdapat dokumen dari setiap aktivitas pelayanan yang dilaksanakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (27, 2, 7, 'Terdapat sistem pemantauan bagi pelanggan untuk mengetahui proses dari permintaan pelayanan yang diajukan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (28, 3, 7, 'Dilakukan konfirmasi kepada pelanggan bila suatu permintaan pelayanan telah selesai', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1459,7 +1489,7 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (45, 7, 7, 'Terdapat kebijakan untuk mengatur perubahan persyaratan yang bisa berubah sewaktu-waktu', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (46, 8, 5, 'Dilakukan evaluasi terhadap setiap persyaratan yang diterapkan dalam sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (47, 8, 5, 'Dilakukan dokumentasi terhadap hasil evaluasi persyaratan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(48, 8, 6, 'Terdapat pembagian jobdesk yang jelas kepada setiap pegawai', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(48, 8, 6, 'Terdapat pembagian job desk yang jelas kepada setiap pegawai', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (49, 8, 6, 'Pendoman manual untuk pegawai dari segi operator dan pemeliharaan sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (50, 8, 1, 'Pendoman manual untuk pegawai dari segi operator dan pemeliharaan sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (51, 9, 5, 'Dilakukan verifikasi dan validasi pada setiap sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1473,8 +1503,8 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (59, 11, 7, 'Memiliki panduan untuk penerapan sistem pelayanan yang baru', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (60, 11, 5, 'Memiliki panduan untuk penerapan sistem pelayanan yang baru', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (61, 11, 5, 'Terdapat dokumen untuk penilaian penerapan sistem pelayanan yang baru atau diperbarui', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(62, 12, 7, 'Dilakukan analisis data untuk kebutuhan stategis pada sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(63, 12, 5, 'Dilakukan analisis data untuk kebutuhan stategis pada sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(62, 12, 7, 'Dilakukan analisis data untuk kebutuhan strategis pada sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(63, 12, 5, 'Dilakukan analisis data untuk kebutuhan strategis pada sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (64, 12, 7, 'Dilakukan perencanaan untuk penerapan standar pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (65, 10, 5, 'Dilakukan perencanaan untuk penerapan standar pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (66, 13, 7, 'Terdapat dokumen dari kumpulan standar pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1482,18 +1512,18 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (68, 14, 7, 'Dilakukan identifikasi terhadap setiap jenis layanan yang diberikan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (69, 14, 7, 'Terdapat aturan untuk pengontrolan layanan yang sedang dikerjakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (70, 14, 1, 'Terdapat aturan untuk pengontrolan layanan yang sedang dikerjakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(71, 14, 7, 'Menerapakan aturan sesuai dengan visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(72, 14, 1, 'Menerapakan aturan sesuai dengan visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(73, 14, 2, 'Menerapakan aturan sesuai dengan visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(74, 14, 5, 'Menerapakan aturan sesuai dengan visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(71, 14, 7, 'Menerapkan aturan sesuai dengan visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(72, 14, 1, 'Menerapkan aturan sesuai dengan visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(73, 14, 2, 'Menerapkan aturan sesuai dengan visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(74, 14, 5, 'Menerapkan aturan sesuai dengan visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (75, 15, 7, 'Terdapat prosedur apabila pelanggan melakukan permintaan perubahaan pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (76, 15, 7, 'Dilakukan pencatatan dari semua perubahan permintaan yang ada', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(77, 16, 5, 'Dilakuakan penentuan tujuan dari pengukuran yang akan dilaksanakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(77, 16, 5, 'Dilakukan penentuan tujuan dari pengukuran yang akan dilaksanakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (78, 16, 5, 'Terdapat spesifikasi dasar untuk tolak ukur pengukuran yang akan dilaksanakan.', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (79, 16, 5, 'Tersedia alat untuk pengumpulan data pengukuran', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (80, 16, 5, 'Dilakukan analisis dengan alat pengukuran', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (81, 17, 5, 'Hasil dari pengumpulan tersebut disimpan pada dokumen dengan detail dari data yang didapatkan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(82, 17, 5, 'Terdapat draf laporan sementara dari hasil analisis pengukuran', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(82, 17, 5, 'Terdapat draft laporan sementara dari hasil analisis pengukuran', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (83, 17, 5, 'Data dari hasil pengukuran diarsipkan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (84, 17, 5, 'Hasil pengukuran dan analisis disampaikan kebagian yang terkait', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (85, 18, 2, 'Dilakukan tindakan yang bersifat korektif bila terjadi kesalahan pada prosedur penangganan gangguan operasional', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1509,7 +1539,7 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (95, 20, 5, 'Setelah dilakukan evaluasi dilakukan identifikasi terhadap alternatif yang bisa digunakan solusi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (96, 20, 5, 'Hasil dari evaluasi dan solusi dipublikasikan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (97, 20, 5, 'Saran dari hasil evaluasi itu dilaksanakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(98, 21, 7, 'Terdapat dokumenentasi dari data awal hasil analisis kinerja proses pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(98, 21, 7, 'Terdapat dokumentasi dari data awal hasil analisis kinerja proses pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (99, 21, 5, 'Dokumentasi dari tindakan awal yang dilakukan dari data hasil analisis awal', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (100, 21, 7, 'Dokumentasi dari tindakan awal yang dilakukan dari data hasil analisis awal', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (101, 22, 5, 'Melakukan perencanaan dari tindakan yang akan diambil', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1531,7 +1561,7 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (117, 26, 5, 'Terdapat daftar dan deskripsi dari pengerjaan proses yang telah direncanakan sebelumnya', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (118, 26, 7, 'Terdapat daftar dan deskripsi dari pengerjaan proses yang telah direncanakan sebelumnya', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (119, 27, 6, 'Dilakukan analisis terkait kebutuhan pelatihan yang akan dilakukan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(120, 27, 6, 'Terdapat komitmen dari penyelengaraan pelatihan agar tujuan pelatihan yang sudah direncanakan bisa tercapai', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(120, 27, 6, 'Terdapat komitmen dari penyelenggaraan pelatihan agar tujuan pelatihan yang sudah direncanakan bisa tercapai', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (121, 27, 6, 'Dilakukan perencanaan yang matang untuk pelatihan pada organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (122, 27, 6, 'Dokumen dari materi pelatihan didapatkan oleh setiap peserta pelatihan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (123, 28, 6, 'Dilakukan penetapan waktu pelatihan dari jauh-jauh hari', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1541,8 +1571,8 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (127, 29, 7, 'Dilakukan proses penilaian dari kualitas pemberian layanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (128, 29, 5, 'Terdapat daftar spesifik untuk penilaian kinerja yang akan dilakukan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (129, 29, 7, 'Dilakukan analisis dari data kinerja dalam proses pelayanan yang berlangsung', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(130, 29, 7, 'Terdapat dokumen untuk mengambarkan suatu proses pelayanan yang dilaksanakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(131, 30, 7, 'Dilakukan revisi apabila suatu proses pelayanan memiliki kualitas yang rendah dan tidak mendukung visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(130, 29, 7, 'Terdapat dokumen untuk menggambarkan suatu proses pelayanan yang dilaksanakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(131, 30, 7, 'Dilakukan revisi atau perbaikan apabila suatu proses pelayanan memiliki kualitas yang rendah dan tidak mendukung visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (132, 30, 5, 'Melakukan analisis dari kemampuan saat ini terkait dengan visi misi organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (133, 30, 5, 'Dari hasil analisis dapat diketahui proses pada pelayanan yang harus ditingkatkan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (134, 31, 5, 'Adanya usulan perbaikan dari proses pelayanan yang sedang berjalan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1557,38 +1587,38 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (143, 33, 2, 'Melakukan tindakan korektif bila terjadi hal tidak sesuai dari prosedur yang dijalankan dengan rencana kerja serta hasil yang diterima pelanggan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (144, 34, 4, 'Terdapat dokumen jenis barang/ jasa yang disediakan oleh pihak luar (pemasok)', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (145, 34, 1, 'Terdapat dokumen jenis barang/ jasa yang disediakan oleh pihak luar (pemasok)', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(146, 34, 4, 'Daftar pemasok yang berkerja sama dengan organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(146, 34, 4, 'Daftar pemasok yang berkerjasama dengan organisasi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (147, 34, 4, 'Terdapat MoU atau perjanjian tertulis dengan pihak pemasok', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (148, 35, 4, 'Pengecekan serta pembuatan laporan dari setiap bahan yang disuplai pemasok', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (149, 35, 1, 'Pengecekan serta pembuatan laporan dari setiap bahan yang disuplai pemasok', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (150, 35, 4, 'Membuat laporan bila barang dari pemasok mengalami kesalahan atau kerusakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(151, 35, 4, 'Terdapat garansi dari pihak pemasok terkait barang yg disuplai', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(151, 35, 4, 'Terdapat garansi dari pihak pemasok terkait barang yang disuplai', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (152, 36, 2, 'Dilakukan pencatatan bila terjadi kesalahan dari prosedur pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(153, 36, 6, 'Dilakukan penijauan kembali dari komitmen pegawai terkait jobdesk yang telah disepakati', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(154, 36, 7, 'Pemantauan terhadap resiko dari prosedur pelayanan yang berjalan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(153, 36, 6, 'Dilakukan peninjauan kembali dari komitmen pegawai terkait job desk yang telah disepakati', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(154, 36, 7, 'Pemantauan terhadap risiko dari prosedur pelayanan yang berjalan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (155, 36, 7, 'Pemantauan kinerja dari pelayanan yang diterima pelanggan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (156, 36, 7, 'Dokumen dari hasil peninjauan proses pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (157, 37, 2, 'Daftar permasalahan yang memerlukan tindakan perbaikan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (158, 37, 2, 'Dilakukan perencanaan untuk perbaikan masalah', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (159, 37, 5, 'Dilakukan perencanaan untuk perbaikan masalah', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(160, 38, 7, 'Dilakukan langkah stategis untuk setiap pelayanan yang diberikan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(161, 38, 5, 'Dilakukan langkah stategis untuk setiap pelayanan yang diberikan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(162, 38, 7, 'Dilakukan pengorganisasian terhadapat pengerjaan dari proses pelayanan yang ada', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(160, 38, 7, 'Melakukan langkah strategis untuk setiap pelayanan yang diberikan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(161, 38, 5, 'Melakukan langkah strategis untuk setiap pelayanan yang diberikan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(162, 38, 7, 'Melakukan pengorganisasian terhadap pengerjaan dari proses pelayanan yang ada', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (163, 38, 7, 'Dilakukan perhitungan untuk mengetahui tingkat kompleksitas dari hasil kerja pada proses pengerjaan pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (164, 38, 4, 'Estimasi biaya yang dikeluarkan untuk pengadaan barang yang mendukung proses pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (165, 39, 7, 'Penjadwalan dari proses pengerjaan pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (166, 39, 5, 'Pengelolaan data untuk menunjang pengembangan rencana kerja', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (167, 39, 6, 'Daftar persyaratan untuk administrasi kepegawaian', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (168, 39, 6, 'Dilakukan perekrutan pegawai baru bila terjadi kekosongan posisi atau memerlukan keterampilan tertentu', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(169, 40, 5, 'Pengkajian ulang terhadap rencana yang akan mempegaruhi pengerjaan proses pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(169, 40, 5, 'Pengkajian ulang terhadap rencana yang akan mempengaruhi pengerjaan proses pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (170, 41, 1, 'Strategi untuk pengelolaan dari kapasitas dan ketersediaan layanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (171, 41, 1, 'Dilakukan pemeriksaan yang berkala terkait pemberian layanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (172, 41, 1, 'Terdapat data yang menggambarkan tingkat penggunaan aset untuk pelayanan yang sedang digunakan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (173, 42, 1, 'Analisis terhadap perkembangan dari pertumbuhan pengguna layanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(175, 42, 1, 'Laporan ketersedian layanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(175, 42, 1, 'Laporan ketersediaan layanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (176, 43, 6, 'Terdapat dokumen rencana kerja yang terpadu antara unit kerja untuk mendukung sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (177, 43, 1, 'Terdapat dokumen rencana kerja yang terpadu antara unit kerja untuk mendukung sistem pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(178, 43, 6, 'Dengan rencana kerja maka wkatu pengerjaan pelayanan menjadi jauh lebih efektif', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(178, 43, 6, 'Dengan rencana kerja maka waktu pengerjaan pelayanan menjadi jauh lebih efektif', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (179, 43, 1, 'Terdapat catatan dari penggunaan dan perawatan alat yang mendukung pemberian layanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (180, 43, 6, 'Dilakukan pendaftaran dari setiap pegawai bila masuk menjadi anggota tim yang ditugaskan pada unit kerja tertentu', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (181, 43, 5, 'Memberikan usulan perbaikan bila terjadi kesalahan koordinasi pengerjaan layanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1597,10 +1627,10 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (184, 45, 1, 'Terdapat strategi untuk meminimalisir risiko yang dapat terjadi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (185, 45, 3, 'Terdapat strategi untuk meminimalisir risiko yang dapat terjadi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (186, 46, 1, 'Analisis untuk setiap risiko yang bisa terjadi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(187, 46, 1, 'Terdapat prioritas untuk penanggan risiko yang bisa terjadi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(187, 46, 1, 'Terdapat prioritas untuk penanganan risiko yang bisa terjadi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (188, 47, 1, 'Terdapat daftar penanggung jawab dari setiap risiko', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (189, 47, 2, 'Terdapat daftar penanggung jawab dari setiap risiko dari gangguan operasional', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(190, 47, 1, 'Dokumen yang berisikan daftar pilihan penangganan untuk mengatasi risiko yang dapat terjadi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(190, 47, 1, 'Dokumen yang berisikan daftar pilihan penanganan untuk mengatasi risiko yang dapat terjadi', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (191, 48, 7, 'Dilakukan analisis dari setiap dampak proses pelayanan yang dijalankan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (192, 48, 5, 'Dilakukan analisis dari setiap dampak proses pelayanan yang dijalankan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (193, 48, 2, 'Dilakukan analisis dari setiap dampak proses pelayanan yang dijalankan untuk meminimalisir kesalahan operasional', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1610,7 +1640,7 @@ INSERT INTO `kuesioner` (`id`, `id_area_proses_spesifik`, `id_subunit`, `pertany
 (197, 49, 1, 'Mekanisme untuk koordinasi antar unit kerja memulai pelaksanaan layanan yang berkelanjutan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (198, 49, 6, 'Mekanisme untuk koordinasi antar unit kerja memulai pelaksanaan layanan yang berkelanjutan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (199, 49, 6, 'Terdapat pelatihan sebelum melaksanakan pelayanan yang berkelanjutan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
-(200, 49, 6, 'Evaluasi terkait efektifitas dari pelatihan dengan pemberian pelayanan yang berkelanjutan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
+(200, 49, 6, 'Evaluasi terkait efektivitas dari pelatihan dengan pemberian pelayanan yang berkelanjutan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (201, 50, 5, 'Terdapat metode untuk verifikasi dan validasi dari rencana pelayanan yang berkelanjutan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (202, 50, 7, 'Terdapat metode untuk verifikasi dan validasi dari rencana pelayanan yang berkelanjutan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
 (203, 50, 5, 'Dari hasil evaluasi terdapat rekomendasi untuk perbaikan proses pelayanan', 'Tidak Ada', 'Ada tetapi tidak diimplementasikan', 'Sebagian diimplementasikan', 'Sebagian besar diimplementasikan', 'Selalu diimplementasikan'),
@@ -1679,7 +1709,7 @@ CREATE TABLE IF NOT EXISTS `responden` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `email_2` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=84 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=85 ;
 
 --
 -- Dumping data for table `responden`
@@ -1722,7 +1752,8 @@ INSERT INTO `responden` (`id`, `nama_responden`, `tempat_lahir`, `tanggal_lahir`
 (80, 'Komarudin', 'Karawang', '1969-07-22', '48 Tahun', 'Gatot Subroto', 'Laki-Laki', 'S1', 5, 'pe_4@survei.com'),
 (81, 'Indah Putri', 'Bandung', '1968-10-05', '49 Tahun', 'supratman', 'Perempuan', 'S1', 5, 'pe_5@survei.com'),
 (82, 'Arif P', 'Cirebon', '1975-03-11', '42 Tahun', 'Bandung', 'Laki-Laki', 'S1', 5, 'pe_6@survei.com'),
-(83, 'Ilham D', 'Cianjur', '1968-03-12', '49 Tahun', 'Bandung', 'Laki-Laki', 'S1', 5, 'pe_7@survei.com');
+(83, 'Ilham D', 'Cianjur', '1968-03-12', '49 Tahun', 'Bandung', 'Laki-Laki', 'S1', 5, 'pe_7@survei.com'),
+(84, 'Coba', 'Bandung', '1998-12-05', '18 Tahun', 'Propelat', 'Laki-Laki', 'SLTA', 1, 'coba@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -1782,7 +1813,7 @@ CREATE TABLE IF NOT EXISTS `survey` (
   `nama_responden` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `survey`
@@ -1825,7 +1856,17 @@ INSERT INTO `survey` (`id`, `id_jadwal`, `nama_responden`, `email`) VALUES
 (39, 12, 'Komarudin', 'pe_4@survei.com'),
 (40, 12, 'Indah Putri', 'pe_5@survei.com'),
 (41, 12, 'Arif P', 'pe_6@survei.com'),
-(42, 12, 'Ilham D', 'pe_7@survei.com');
+(42, 12, 'Ilham D', 'pe_7@survei.com'),
+(43, 13, 'Coba', 'coba@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `detail_aps`
+--
+DROP TABLE IF EXISTS `detail_aps`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detail_aps` AS (select `aps`.`id` AS `id`,`ap`.`id` AS `id_area_proses`,`ap`.`area_proses` AS `area_proses`,`sg`.`nama_spesific_goal` AS `nama_spesific_goal`,`aps`.`rataan` AS `rataan` from ((`area_proses_spesifik` `aps` left join `area_proses` `ap` on((`ap`.`id` = `aps`.`id_area_proses`))) left join `spesific_goal` `sg` on((`sg`.`id` = `aps`.`id_spesific_goal`))));
 
 -- --------------------------------------------------------
 
@@ -1839,11 +1880,20 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `detail_kuesioner2`
+--
+DROP TABLE IF EXISTS `detail_kuesioner2`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detail_kuesioner2` AS (select `k`.`id` AS `id`,`su`.`sub_unit` AS `sub_unit`,`aps`.`nama` AS `nama`,`k`.`pertanyaan` AS `pertanyaan`,`k`.`A` AS `A`,`k`.`B` AS `B`,`k`.`C` AS `C`,`k`.`D` AS `D`,`k`.`E` AS `E` from ((`kuesioner` `k` left join `sub_unit` `su` on((`k`.`id_subunit` = `su`.`id`))) left join `area_proses_spesifik` `aps` on((`k`.`id_area_proses_spesifik` = `aps`.`id`))));
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `detail_sp`
 --
 DROP TABLE IF EXISTS `detail_sp`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detail_sp` AS (select `ds`.`spesific_goal` AS `spesific_goal`,`k`.`pertanyaan` AS `pertanyaan`,`su`.`sub_unit` AS `sub_unit`,`ds`.`skor` AS `skor` from ((`detail_survey` `ds` left join `kuesioner` `k` on((`ds`.`nomor_soal` = `k`.`id`))) left join `sub_unit` `su` on((`k`.`id_subunit` = `su`.`id`))));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detail_sp` AS (select `ds`.`spesific_goal` AS `spesific_goal`,`k`.`pertanyaan` AS `pertanyaan`,`su`.`sub_unit` AS `sub_unit`,avg(`ds`.`skor`) AS `total` from ((`detail_survey` `ds` left join `kuesioner` `k` on((`ds`.`nomor_soal` = `k`.`id`))) left join `sub_unit` `su` on((`k`.`id_subunit` = `su`.`id`))) group by `ds`.`spesific_goal`,`k`.`pertanyaan`,`su`.`sub_unit`);
 
 -- --------------------------------------------------------
 

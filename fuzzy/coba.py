@@ -35,11 +35,11 @@ sg3['pi'] = fuzz1.trimf(sg3.universe, [1, 2, 3])
 sg3['li'] = fuzz1.trimf(sg3.universe, [2, 3, 4])
 sg3['fi'] = fuzz1.trimf(sg3.universe, [3, 4, 4])
 
-karakteristik['ny'] = fuzz1.trimf(karakteristik.universe, [0, 0, 1])
-karakteristik['ni'] = fuzz1.trimf(karakteristik.universe, [0, 1, 2])
-karakteristik['pi'] = fuzz1.trimf(karakteristik.universe, [1, 2, 3])
-karakteristik['li'] = fuzz1.trimf(karakteristik.universe, [2, 3, 4])
-karakteristik['fi'] = fuzz1.trimf(karakteristik.universe, [3, 4, 4])
+karakteristik['ny'] = fuzz1.trimf(karakteristik.universe, [0, 0, 0.5])
+karakteristik['ni'] = fuzz1.trimf(karakteristik.universe, [0.5, 1, 1.5])
+karakteristik['pi'] = fuzz1.trimf(karakteristik.universe, [1.5, 2, 2.5])
+karakteristik['li'] = fuzz1.trimf(karakteristik.universe, [2.5, 3, 3.5])
+karakteristik['fi'] = fuzz1.trimf(karakteristik.universe, [3.5, 4, 4])
 # You can see how these look with .view()
 #quality['average'].view()
 """
@@ -154,9 +154,9 @@ tipping = fuzz.ControlSystemSimulation(tipping_ctrl)
 
 # Pass inputs to the ControlSystem using Antecedent labels with Pythonic API
 # Note: if you like passing many inputs all at once, use .inputs(dict_of_data)
-tipping.input['sg1'] = 3.60
-tipping.input['sg2'] = 3.40
-tipping.input['sg3'] = 3.30
+tipping.input['sg1'] = 3.00
+tipping.input['sg2'] = 3.43
+tipping.input['sg3'] = 0
 
 # Crunch the numbers
 tipping.compute()

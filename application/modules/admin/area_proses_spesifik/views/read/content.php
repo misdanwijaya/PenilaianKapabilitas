@@ -11,7 +11,7 @@
     <!-- /loaders -->
       
     <div class="x_title">
-      <h2 style="margin-top: 10px">Data Area Proses Spesifik</h2>
+      <h2 style="margin-top: 10px">Detail Area Proses</h2>
       <a href="<?php echo base_url('area_proses_spesifik/create');?>"><button type="submit" name="tambah" class="btn btn-primary" style="float: right;"><i class="fa fa-plus-square"></i> Tambah</button></a>  
       <div class="clearfix"></div>
     </div>

@@ -39,7 +39,7 @@
             <th>SG1</th>
             <th>SG2</th>
             <th>SG3</th>
-            <th>Nilai Karakteristik(SCAMPI)</th>
+            <th>Nilai Karakteristik(Rata-rata)</th>
             <th>Nilai Karakteristik(Fuzzy)</th>
             <th>Perhitungan</th>
             <th>Operasi</th>

@@ -41,7 +41,7 @@
           <tr class="headings">
             <th>No</th>
             <th>Unit Kerja</th>
-            <!--<th>Area Proses Spesifik</th>-->
+            <th>Area Proses</th>
             <th>Pertanyaan</th>
             <th>Jawaban A</th>
             <th>Jawaban B</th>
@@ -60,6 +60,7 @@
             <tr>
               <td><?php echo $no++?></td>
               <td><?php echo $key->sub_unit?></td>
+              <td><?php echo $key->nama?></td>
               <td><?php echo $key->pertanyaan?></td>
               <td><?php echo $key->A?></td>
               <td><?php echo $key->B?></td>
